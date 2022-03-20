@@ -37,7 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'main',
+    # 'news',
 ]
+
+DEBUG_TOOLBAR_PATCH_SETTINGS = False 
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
