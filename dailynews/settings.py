@@ -38,7 +38,18 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main',
-    # 'news',
+    'news',
+    'cat',
+    'subcat',
+    'contactform',
+    'trending',
+    'manager',
+    'newsletter',
+    'django.contrib.humanize',
+    'comment',
+    'blacklist',
+    'django_crontab',  # for cron tab
+    'qr_code', # For QR Code
 ]
 
 DEBUG_TOOLBAR_PATCH_SETTINGS = False 

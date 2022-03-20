@@ -1,17 +1,40 @@
+from random import randint
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 from ipware import get_client_ip
 from ip2geotools.databases.noncommercial import DbIpCity
+from cat.models import Cat
 
 from main.models import Main
+from news.models import News
+from subcat.models import SubCat
+from trending.models import Trending
 
 # Create your views here.
 
 
 def home(request):
 
-    pass
+    site = Main.objects.get(pk=2)
+    news = News.objects.filter(act=1).order_by('-pk')
+
+    cat = Cat.objects.all()
+    subcat = SubCat.objects.all()
+
+    lastnews = News.objects.filter(act=1).order_by('-pk')[:3]
+
+    popnews = News.objects.filter(act=1).order_by('-show')
+
+    popnews2 = News.objects.filter(act=1).order_by('-show')[:3]
+
+    trending = Trending.objects.all().order_by('-pk')[:3]
+
+    lastnews2 = News.objects.filter(act=1).order_by('-pk')[:4]
+
+    random_object = Trending.objects.all()[randint(0, len(trending) -1)]
+
+    return render(request, 'front/home.html', {'site':site, 'news':news, 'cat':cat, 'subcat':subcat, 'lastnews':lastnews, 'popnews':popnews, 'popnews2':popnews2, 'trending':trending, 'lastnews2':lastnews2})
 
 
 def login(request):
